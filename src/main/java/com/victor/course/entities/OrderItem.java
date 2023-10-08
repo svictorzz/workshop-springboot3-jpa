@@ -65,6 +65,10 @@ public class OrderItem implements Serializable{
 		this.price = price;
 	}
 
+	public Double getSubTotal() {
+		return price * quantitiy;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -81,5 +85,4 @@ public class OrderItem implements Serializable{
 		OrderItem other = (OrderItem) obj;
 		return Objects.equals(id, other.id);
 	}
-	
 }

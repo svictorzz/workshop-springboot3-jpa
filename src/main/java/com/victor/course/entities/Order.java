@@ -90,11 +90,6 @@ public class Order implements Serializable {
 		this.client = client;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-	
 	public Payment getPayment() {
 		return payment;
 	}
@@ -106,6 +101,20 @@ public class Order implements Serializable {
 	public Set<OrderItem> getItems(){
 		return items;
 	}
+	
+	public Double getTotal() {
+		double sum = 0.0;
+		for(OrderItem x : items) {
+			sum += x.getSubTotal();
+		}
+		return sum;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	
 
 	@Override
 	public boolean equals(Object obj) {
